@@ -4,8 +4,8 @@
 bin/
 gen/
 target/
-postgres/
-
+postgres*/
+sonarqube*/
 ###############
 # Java class files
 ###############

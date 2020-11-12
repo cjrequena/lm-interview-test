@@ -12,7 +12,7 @@ public class Medicine extends Product {
 
   public BigDecimal getTax() {
     if (this.isImported()) {
-      return Util.round(this.basePrice.multiply(Constants.IMPORTED_PRODUCT_TAX), BigDecimal.valueOf(0.05), RoundingMode.UP);
+      return CommonUtils.round(this.basePrice.multiply(Constants.IMPORTED_PRODUCT_TAX), BigDecimal.valueOf(0.05), RoundingMode.UP);
     }
     return BigDecimal.ZERO;
   }

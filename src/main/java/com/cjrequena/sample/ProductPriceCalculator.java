@@ -30,16 +30,16 @@ public class ProductPriceCalculator {
 
   public void printReceipt(List<Product> products) {
 
-    StringBuffer input = new StringBuffer("INPUT").append("\n");
-    StringBuffer output= new StringBuffer("OUTPUT").append("\n");
+    StringBuilder input = new StringBuilder("INPUT").append("\n");
+    StringBuilder output= new StringBuilder("OUTPUT").append("\n");
     for (Product product : products) {
       input.append("1 " + product.getName() + " at " + product.getBasePrice()).append("\n");
       output.append("1 " + product.getName() + " : " + calculatePriceAfterTaxes(product)).append("\n");
     }
-    System.out.println(input.toString());
-    System.out.println(output.toString());
-    System.out.printf("Sales Tax: %.2f\n", calculateTotalTax(products));
-    System.out.printf("Total: %.2f\n", calculateTotalPriceAfterTaxes(products));
-    System.out.println(" ");
+    log.info(input.toString());
+    log.info(output.toString());
+    log.info("Sales Tax: {}", calculateTotalTax(products));
+    log.info("Total: {}\n", calculateTotalPriceAfterTaxes(products));
+    log.info(" ");
   }
 }

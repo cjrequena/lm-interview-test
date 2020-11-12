@@ -12,9 +12,9 @@ public class Other extends Product {
 
   public BigDecimal getTax() {
     BigDecimal importedTax = BigDecimal.ZERO;
-    BigDecimal basicTax = Util.round(this.basePrice.multiply(Constants.BASIC_TAX), BigDecimal.valueOf(0.05), RoundingMode.UP);
+    BigDecimal basicTax = CommonUtils.round(this.basePrice.multiply(Constants.BASIC_TAX), BigDecimal.valueOf(0.05), RoundingMode.UP);
     if (this.isImported()) {
-      importedTax = Util.round(this.basePrice.multiply(Constants.IMPORTED_PRODUCT_TAX), BigDecimal.valueOf(0.05), RoundingMode.UP);
+      importedTax = CommonUtils.round(this.basePrice.multiply(Constants.IMPORTED_PRODUCT_TAX), BigDecimal.valueOf(0.05), RoundingMode.UP);
     }
     return basicTax.add(importedTax);
   }

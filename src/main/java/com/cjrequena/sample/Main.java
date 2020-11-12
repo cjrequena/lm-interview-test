@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-  public static void main(String arg[]){
+  public static void main(String[] arg){
     ProductPriceCalculator productPriceCalculator = new ProductPriceCalculator();
     //
     Book book1 = new Book("Book",  false, BigDecimal.valueOf(12.49));
