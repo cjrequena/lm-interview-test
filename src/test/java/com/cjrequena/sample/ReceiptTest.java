@@ -19,18 +19,18 @@ class ReceiptTest {
   @InjectMocks
   private Receipt receipt;
   //
-  private static Book book1;
-  private static Other musicCd1;
-  private static Food chocolateBar;
+  private static Product book1;
+  private static Product musicCd1;
+  private static Product chocolateBar;
   //
-  private static Food importedBoxOfChocolates;
-  private static Other importedBottleOfPerfume1;
+  private static Product importedBoxOfChocolates;
+  private static Product importedBottleOfPerfume1;
 
   //
-  private static Other importedBottleOfPerfume2;
-  private static Other bottlePerfume;
-  private static Medicine packetOfHeadachePills;
-  private static Food boxOfImportedChocolates;
+  private static Product importedBottleOfPerfume2;
+  private static Product bottlePerfume;
+  private static Product packetOfHeadachePills;
+  private static Product boxOfImportedChocolates;
 
   private static List<Product> products1;
   private static List<Product> products2;
@@ -43,19 +43,19 @@ class ReceiptTest {
   static void before() throws IOException {
 
     //
-    book1 = new Book("Book",  false, BigDecimal.valueOf(12.49));
-    musicCd1 = new Other("music CD", false, BigDecimal.valueOf(14.99));
-    chocolateBar = new Food("chocolate bar", false, BigDecimal.valueOf(0.85));
+    book1 = new Product("Book",  false,true, BigDecimal.valueOf(12.49));
+    musicCd1 = new Product("music CD", false, false,BigDecimal.valueOf(14.99));
+    chocolateBar = new Product("chocolate bar", false,true, BigDecimal.valueOf(0.85));
 
     //
-    importedBoxOfChocolates = new Food("imported box of chocolates", true, BigDecimal.valueOf(10));
-    importedBottleOfPerfume1 = new Other("imported bottle of perfume", true, BigDecimal.valueOf(47.50));
+    importedBoxOfChocolates = new Product("imported box of chocolates", true,true, BigDecimal.valueOf(10));
+    importedBottleOfPerfume1 = new Product("imported bottle of perfume", true,false, BigDecimal.valueOf(47.50));
 
     //
-    importedBottleOfPerfume2 = new Other("Imported bottle of perfume", true, BigDecimal.valueOf(27.99));
-    bottlePerfume = new Other("bottle of perfume", false, BigDecimal.valueOf(18.99));
-    packetOfHeadachePills = new Medicine("packet of headache pills", false, BigDecimal.valueOf(9.75));
-    boxOfImportedChocolates = new Food("box of imported chocolates",  true, BigDecimal.valueOf(11.25));
+    importedBottleOfPerfume2 = new Product("Imported bottle of perfume", true, false,BigDecimal.valueOf(27.99));
+    bottlePerfume = new Product("bottle of perfume", false, false,BigDecimal.valueOf(18.99));
+    packetOfHeadachePills = new Product("packet of headache pills", false, true,BigDecimal.valueOf(9.75));
+    boxOfImportedChocolates = new Product("box of imported chocolates",  true, true,BigDecimal.valueOf(11.25));
 
     products1 = Arrays.asList(book1,musicCd1,chocolateBar);
     products2 = Arrays.asList(importedBoxOfChocolates,importedBottleOfPerfume1);
