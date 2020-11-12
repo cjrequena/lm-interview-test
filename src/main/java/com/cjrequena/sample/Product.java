@@ -17,10 +17,7 @@ public abstract class Product {
   @NonNull
   protected BigDecimal basePrice;
 
-  protected EProductType productType;
-
   public abstract BigDecimal getTax();
 
-  public abstract EProductType getProductType();
 
 }

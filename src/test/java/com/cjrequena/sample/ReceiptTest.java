@@ -14,10 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class ProductPriceCalculatorTest {
+class ReceiptTest {
 
   @InjectMocks
-  private ProductPriceCalculator productPriceCalculator;
+  private Receipt receipt;
   //
   private static Book book1;
   private static Other musicCd1;
@@ -65,41 +65,35 @@ class ProductPriceCalculatorTest {
   @Test
   void calculatePriceAfterTaxesTest() {
     //
-    assertEquals(BigDecimal.valueOf(12.49),productPriceCalculator.calculatePriceAfterTaxes(book1));
-    assertEquals(BigDecimal.valueOf(16.49),productPriceCalculator.calculatePriceAfterTaxes(musicCd1));
-    assertEquals(BigDecimal.valueOf(0.85),productPriceCalculator.calculatePriceAfterTaxes(chocolateBar));
+    assertEquals(BigDecimal.valueOf(12.49), receipt.calculatePriceAfterTaxes(book1));
+    assertEquals(BigDecimal.valueOf(16.49), receipt.calculatePriceAfterTaxes(musicCd1));
+    assertEquals(BigDecimal.valueOf(0.85), receipt.calculatePriceAfterTaxes(chocolateBar));
 
     //
-    assertEquals(BigDecimal.valueOf(10.50).setScale(2), productPriceCalculator.calculatePriceAfterTaxes(importedBoxOfChocolates));
-    assertEquals(BigDecimal.valueOf(54.65), productPriceCalculator.calculatePriceAfterTaxes(importedBottleOfPerfume1));
+    assertEquals(BigDecimal.valueOf(10.50).setScale(2), receipt.calculatePriceAfterTaxes(importedBoxOfChocolates));
+    assertEquals(BigDecimal.valueOf(54.65), receipt.calculatePriceAfterTaxes(importedBottleOfPerfume1));
 
     //
-    assertEquals(BigDecimal.valueOf(32.19), productPriceCalculator.calculatePriceAfterTaxes(importedBottleOfPerfume2));
-    assertEquals(BigDecimal.valueOf(20.89),productPriceCalculator.calculatePriceAfterTaxes(bottlePerfume));
-    assertEquals(BigDecimal.valueOf(9.75),productPriceCalculator.calculatePriceAfterTaxes(packetOfHeadachePills));
-    assertEquals(BigDecimal.valueOf(11.85).setScale(2), productPriceCalculator.calculatePriceAfterTaxes(boxOfImportedChocolates));
+    assertEquals(BigDecimal.valueOf(32.19), receipt.calculatePriceAfterTaxes(importedBottleOfPerfume2));
+    assertEquals(BigDecimal.valueOf(20.89), receipt.calculatePriceAfterTaxes(bottlePerfume));
+    assertEquals(BigDecimal.valueOf(9.75), receipt.calculatePriceAfterTaxes(packetOfHeadachePills));
+    assertEquals(BigDecimal.valueOf(11.85).setScale(2), receipt.calculatePriceAfterTaxes(boxOfImportedChocolates));
 
   }
 
   @Test
   void calculateTotalPriceAfterTaxesTest() {
-    assertEquals(BigDecimal.valueOf(29.83),productPriceCalculator.calculateTotalPriceAfterTaxes(products1));
-    assertEquals(BigDecimal.valueOf(65.15),productPriceCalculator.calculateTotalPriceAfterTaxes(products2));
-    assertEquals(BigDecimal.valueOf(74.68),productPriceCalculator.calculateTotalPriceAfterTaxes(products3));
+    assertEquals(BigDecimal.valueOf(29.83), receipt.calculateTotalPriceAfterTaxes(products1));
+    assertEquals(BigDecimal.valueOf(65.15), receipt.calculateTotalPriceAfterTaxes(products2));
+    assertEquals(BigDecimal.valueOf(74.68), receipt.calculateTotalPriceAfterTaxes(products3));
   }
 
 
   @Test
   void calculateTotalTaxTest() {
-    assertEquals(BigDecimal.valueOf(1.50).setScale(2),productPriceCalculator.calculateTotalTax(products1));
-    assertEquals(BigDecimal.valueOf(7.65 ).setScale(2),productPriceCalculator.calculateTotalTax(products2));
-    assertEquals(BigDecimal.valueOf(6.70).setScale(2),productPriceCalculator.calculateTotalTax(products3));
+    assertEquals(BigDecimal.valueOf(1.50).setScale(2), receipt.calculateTotalTax(products1));
+    assertEquals(BigDecimal.valueOf(7.65 ).setScale(2), receipt.calculateTotalTax(products2));
+    assertEquals(BigDecimal.valueOf(6.70).setScale(2), receipt.calculateTotalTax(products3));
   }
 
-  @Test
-  void printReceipt() {
-    productPriceCalculator.printReceipt(products1);
-    productPriceCalculator.printReceipt(products2);
-    productPriceCalculator.printReceipt(products3);
-  }
 }

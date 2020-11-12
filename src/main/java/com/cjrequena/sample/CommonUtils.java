@@ -2,6 +2,8 @@ package com.cjrequena.sample;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CommonUtils {
 
@@ -18,5 +20,15 @@ public class CommonUtils {
       result = result.setScale(2, RoundingMode.UNNECESSARY);
       return result;
     }
+  }
+
+  public static Double extractDecimalNumberFrom(String input) {
+    Double amount = null;
+    Pattern p = Pattern.compile("[\\d]+[\\.][\\d]{2}$");
+    Matcher m = p.matcher(input);
+    while (m.find()) {
+       amount = Double.valueOf(m.group());
+    }
+    return amount;
   }
 }

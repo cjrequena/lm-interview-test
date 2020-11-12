@@ -1,14 +1,17 @@
 package com.cjrequena.sample;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+@Log4j2
 public class Main {
   public static void main(String[] arg){
-    ProductPriceCalculator productPriceCalculator = new ProductPriceCalculator();
+    Receipt receipt = new Receipt();
     //
-    Book book1 = new Book("Book",  false, BigDecimal.valueOf(12.49));
+    Book book1 = new Book("book",  false, BigDecimal.valueOf(12.49));
     Other musicCd1 = new Other("music CD", false, BigDecimal.valueOf(14.99));
     Food chocolateBar = new Food("chocolate bar", false, BigDecimal.valueOf(0.85));
 
@@ -28,11 +31,18 @@ public class Main {
     List<Product> products3 = Arrays.asList(importedBottleOfPerfume2, bottlePerfume,packetOfHeadachePills,boxOfImportedChocolates);
 
     //
-    productPriceCalculator.printReceipt(products1);
-    productPriceCalculator.printReceipt(products2);
-    productPriceCalculator.printReceipt(products3);
-
-
+    log.info("Input 1");
+    receipt.printReceiptInput(products1);
+    log.info("Output 1");
+    receipt.printReceiptOutput(products1);
+    log.info("Input 2");
+    receipt.printReceiptInput(products2);
+    log.info("Output 2");
+    receipt.printReceiptOutput(products2);
+    log.info("Input 3");
+    receipt.printReceiptInput(products3);
+    log.info("Output 3");
+    receipt.printReceiptOutput(products3);
 
   }
 }
